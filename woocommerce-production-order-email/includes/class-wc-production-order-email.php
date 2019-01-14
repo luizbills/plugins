@@ -34,8 +34,6 @@ class WC_Production_Order_Email extends WC_Email {
         $this->template_html  = 'emails/admin-new-order.php';
         $this->template_plain = 'emails/plain/admin-new-order.php';
 
-        add_action( 'woocommerce_order_status_producao', array( $this, 'trigger' ) );
-
         // Call parent constructor to load any other defaults not explicity defined here
         parent::__construct();
 
