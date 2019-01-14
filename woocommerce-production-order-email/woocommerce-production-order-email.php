@@ -33,3 +33,9 @@ function add_production_order_woocommerce_email( $email_classes ) {
     
 }
 add_filter( 'woocommerce_email_classes', 'add_production_order_woocommerce_email' );
+
+add_action( 'woocommerce_order_status_producao', 'production_order_trigger_email' );
+function production_order_trigger_email ( $order_id ) {
+	$emails = WC_Emails::instance()->emails;
+	$emails['WC_Production_Order_Email']->trigger( $order_id, wc_get_order( $order_id ) );
+}
